@@ -6,7 +6,7 @@ import unicodedata
 
 from ._compat import u
 
-__all__ = ['get', 'get_pinyin', 'get_initial']
+__all__ = ['get', 'get_pinyin', 'get_initial', 'get_initial_phonemes']
 
 
 # init pinyin dict
