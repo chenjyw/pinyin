@@ -67,4 +67,23 @@ def get_initial(s, delimiter=' '):
     initials = (p[0] for p in _pinyin_generator(u(s), format="strip"))
     return delimiter.join(initials)
 
+def get_initial_phonemes(s, delimiter=' '):
+    initial_phonemes = []
+
+    for p in _pinyin_generator(u(s), format="strip"):
+        first_vowel = None
+        for i, c in enumerate(p):
+            if c in "aeiouv":
+                first_vowel = i
+                break
+
+        if first_vowel:
+            if first_vowel > 0:
+                initial_phonemes.append(p[:first_vowel])
+            else:
+                initial_phonemes.append(p)
+        else:
+            initial_phonemes.append(p)
+    return initial_phonemes
+
 tonemarks = ["", u("̄"), u("́"), u("̌"), u("̀"), ""]
